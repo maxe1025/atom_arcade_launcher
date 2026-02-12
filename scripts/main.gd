@@ -68,7 +68,7 @@ func add_tile(data: Dictionary, game_path: String):
 	var tile = GameTileScene.instantiate()
 	grid.add_child(tile)
 
-	var thumb: TextureButton = tile.get_node("Thumbnail")
+	var thumb: TextureButton = tile.get_node("MarginContainer/Thumbnail")
 	var name_label: Label = tile.get_node("Name")
 
 	# Set title
@@ -97,14 +97,25 @@ func add_tile(data: Dictionary, game_path: String):
 		)
 	)
 
-	# Simple focus animation
+	var tween: Tween
+
+	# Make sure pivot is center
+	thumb.pivot_offset = thumb.size / 2
+
 	thumb.focus_entered.connect(func():
-		tile.scale = Vector2(1.1, 1.1)
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		tween.tween_property(thumb, "scale", Vector2(1.12, 1.12), 0.12)
 	)
 
 	thumb.focus_exited.connect(func():
-		tile.scale = Vector2.ONE
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		tween.tween_property(thumb, "scale", Vector2.ONE, 0.12)
 	)
+
 
 	# Focus first tile automatically
 	if grid.get_child_count() == 1:

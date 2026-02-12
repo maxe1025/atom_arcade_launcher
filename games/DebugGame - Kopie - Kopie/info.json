@@ -1,0 +1,5 @@
+{
+  "title": "Debug Game",
+  "exec_windows": "game.exe",
+  "exec_linux": "game.x86_64"
+}

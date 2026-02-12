@@ -8,32 +8,37 @@ script = ExtResource("1_0wfyh")
 [node name="Control" type="Control" parent="." unique_id=12532317]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 646.0
+offset_right = 1981.0
+offset_bottom = 1084.0
 
 [node name="Label" type="Label" parent="Control" unique_id=1318242757]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.036000002
-offset_right = 1.0
-offset_bottom = -0.25600052
+anchor_bottom = 0.021000002
+offset_left = 940.5
+offset_right = -940.5
+offset_bottom = 0.23599815
+grow_horizontal = 2
 text = "Atom Arcade"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=1610498920]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.037
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.09799957
-offset_bottom = 4.0
+anchor_left = 0.042402826
+anchor_top = 0.04461255
+anchor_right = 0.95658755
+anchor_bottom = 0.9326568
+offset_top = -0.36000443
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer" unique_id=1425471843]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
 columns = 5
