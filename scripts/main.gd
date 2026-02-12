@@ -98,8 +98,7 @@ func add_tile(data: Dictionary, game_path: String):
 	)
 
 	var tween: Tween
-
-	# Make sure pivot is center
+	# Always set pivot to center
 	thumb.pivot_offset = thumb.size / 2
 
 	thumb.focus_entered.connect(func():
@@ -115,7 +114,6 @@ func add_tile(data: Dictionary, game_path: String):
 		tween = create_tween()
 		tween.tween_property(thumb, "scale", Vector2.ONE, 0.12)
 	)
-
 
 	# Focus first tile automatically
 	if grid.get_child_count() == 1:
