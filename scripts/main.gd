@@ -8,6 +8,9 @@ extends Node2D
 var GameTileScene := preload("res://scenes/game_tile.tscn")
 var default_cover := preload("res://img/cover.png")
 
+# Arcade Controller Constants
+# For documentation visit the Atom Arcade Connector GitHub page:
+# https://github.com/maxe1025/atom_arcade_connector
 const BTN_A     = 0b00000001
 const BTN_B     = 0b00000010
 const BTN_X     = 0b00000100
@@ -140,9 +143,7 @@ func _update_header():
 	header_label.text = time_str + "  |  " + date_str
 
 
-# --------------------------------------------------
 # Load All Games
-# --------------------------------------------------
 func load_games():
 	var games_dir = get_games_dir()
 
@@ -168,9 +169,7 @@ func load_games():
 	dir.list_dir_end()
 
 
-# --------------------------------------------------
 # Load Single Game
-# --------------------------------------------------
 func load_game(game_path: String):
 	var info_path = game_path.path_join("info.json")
 
@@ -192,9 +191,7 @@ func load_game(game_path: String):
 	print("Tile added.")
 
 
-# --------------------------------------------------
 # Create Tile
-# --------------------------------------------------
 func add_tile(data: Dictionary, game_path: String):
 	var tile = GameTileScene.instantiate()
 	grid.add_child(tile)
@@ -252,9 +249,7 @@ func add_tile(data: Dictionary, game_path: String):
 		thumb.grab_focus()
 
 
-# --------------------------------------------------
-# Launch Game (Cross Platform)
-# --------------------------------------------------
+# Launch Game
 func launch_game(game_path: String, data: Dictionary):
 	var os_name = OS.get_name()
 	var exec_key := ""
@@ -280,9 +275,7 @@ func launch_game(game_path: String, data: Dictionary):
 	get_tree().quit()
 
 
-# --------------------------------------------------
-# Shutdown System (Optional)
-# --------------------------------------------------
+# Shutdown System
 func shutdown_system():
 	var os_name = OS.get_name()
 
@@ -292,9 +285,7 @@ func shutdown_system():
 		OS.execute("shutdown", ["-h", "now"], [])
 
 
-# --------------------------------------------------
-# Get Games Directory (Cross Platform)
-# --------------------------------------------------
+# Get Games Directory
 func get_games_dir() -> String:
 	if OS.has_feature("editor"):
 		return ProjectSettings.globalize_path("res://games")
