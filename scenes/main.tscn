@@ -1,17 +1,17 @@
-[gd_scene format=3 uid="uid://bn1ll7nbfp5i3"]
+[gd_scene load_steps=2 format=3 uid="uid://bn1ll7nbfp5i3"]
 
 [ext_resource type="Script" uid="uid://cdwnoqdx7lxqc" path="res://scripts/main.gd" id="1_0wfyh"]
 
-[node name="MainMenu" type="Node2D" unique_id=1190616566]
+[node name="MainMenu" type="Node2D"]
 script = ExtResource("1_0wfyh")
 
-[node name="Control" type="Control" parent="." unique_id=12532317]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1981.0
 offset_bottom = 1084.0
 
-[node name="Label" type="Label" parent="Control" unique_id=1318242757]
+[node name="Header" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -23,22 +23,51 @@ grow_horizontal = 2
 text = "Atom Arcade"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control" unique_id=1610498920]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.042402826
 anchor_top = 0.04461255
 anchor_right = 0.95658755
-anchor_bottom = 0.9326568
+anchor_bottom = 0.8330258
 offset_top = -0.36000443
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer" unique_id=1425471843]
+[node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
 columns = 5
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017153457
+anchor_top = 0.85005546
+anchor_right = 0.98300004
+anchor_bottom = 1.0599631
+offset_left = 0.019001007
+offset_top = 0.539917
+offset_right = 0.6768799
+bbcode_enabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Footer" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 1.0720111
+anchor_right = 0.99300003
+anchor_bottom = 1.0930111
+offset_left = -0.8480005
+offset_top = -0.060058594
+offset_right = -0.13305664
+offset_bottom = 0.17590332
+grow_horizontal = 2
+text = "\"A\" to open a game"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true

@@ -1,5 +1,6 @@
 {
   "title": "Debug Game",
+  "description": "[b][font_size=18]Debug Game[/font_size][/b]\n[color=gray]Version 1.0.0 - February 2026[/color]\n\nA placeholder game used for testing the Atom Arcade Launcher. It verifies that game tiles load correctly, cover images display as expected, and that the launch mechanism works on all supported platforms.\n\n[b]Features:[/b]\n• Tile loading test\n• Cover image fallback test\n• Launch handler verification",
   "exec_windows": "game.exe",
   "exec_linux": "game.x86_64"
 }
