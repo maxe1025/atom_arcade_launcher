@@ -4,6 +4,7 @@ extends Node2D
 @onready var scroll_container: ScrollContainer = $Control/ScrollContainer
 @onready var description_label: RichTextLabel = $Control/DescriptionLabel
 @onready var header_label: Label = $Control/Header
+@onready var shutdown_button: Button = $Control/ShutdownButton
 
 var GameTileScene := preload("res://scenes/game_tile.tscn")
 var default_cover := preload("res://img/cover.png")
@@ -24,6 +25,7 @@ var controller: Controller
 var input_cooldown := 0.3
 var input_timer := 0.0
 var btn_a_was_pressed := false
+var btn_start_was_pressed := false
 
 
 func _ready():
@@ -31,6 +33,8 @@ func _ready():
 	controller.start(_get_serial_port())
 
 	load_games()
+	
+	shutdown_button.pressed.connect(shutdown_system)
 
 	var timer = Timer.new()
 	timer.wait_time = 1.0
@@ -54,23 +58,41 @@ func _process(delta: float):
 		var move_x = (raw_x - 512.0) / 512.0
 		var move_y = (raw_y - 512.0) / 512.0
 
-		if move_x > 0.5:
-			_move_focus(-1)
-			input_timer = input_cooldown
-		elif move_x < -0.5:
-			_move_focus(1)
-			input_timer = input_cooldown
-		elif move_y > 0.5:
-			_move_focus(-grid.columns)
-			input_timer = input_cooldown
-		elif move_y < -0.5:
-			_move_focus(grid.columns)
-			input_timer = input_cooldown
+		var focused = get_viewport().gui_get_focus_owner()
+
+		if focused == shutdown_button:
+			if abs(move_x) > 0.5 or abs(move_y) > 0.5:
+				var tiles = grid.get_children()
+				if tiles.size() > 0:
+					tiles[0].get_node("MarginContainer/Thumbnail").grab_focus()
+				input_timer = input_cooldown
+		else:
+			if move_x > 0.5:
+				_move_focus(-1)
+				input_timer = input_cooldown
+			elif move_x < -0.5:
+				_move_focus(1)
+				input_timer = input_cooldown
+			elif move_y > 0.5:
+				_move_focus(-grid.columns)
+				input_timer = input_cooldown
+			elif move_y < -0.5:
+				_move_focus(grid.columns)
+				input_timer = input_cooldown
 
 	var btn_a_pressed = (buttons & BTN_A) != 0
 	if btn_a_pressed and not btn_a_was_pressed:
-		_launch_focused_game()
+		var focused = get_viewport().gui_get_focus_owner()
+		if focused == shutdown_button:
+			shutdown_system()
+		else:
+			_launch_focused_game()
 	btn_a_was_pressed = btn_a_pressed
+
+	var btn_start_pressed = (buttons & BTN_START) != 0
+	if btn_start_pressed and not btn_start_was_pressed:
+		shutdown_button.grab_focus()
+	btn_start_was_pressed = btn_start_pressed
 
 
 func _move_focus(direction: int):
@@ -275,14 +297,15 @@ func launch_game(game_path: String, data: Dictionary):
 	get_tree().quit()
 
 
-# Shutdown System
 func shutdown_system():
 	var os_name = OS.get_name()
-
 	if os_name == "Windows":
-		OS.execute("shutdown", ["/s", "/t", "0"], [])
-	elif os_name == "Linux":
-		OS.execute("shutdown", ["-h", "now"], [])
+		OS.execute("shutdown", ["/s", "/t", "0"])
+	elif os_name in ["Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD"]:
+		OS.execute("shutdown", ["-h", "now"])
+	elif os_name == "macOS":
+		OS.execute("sudo", ["shutdown", "-h", "now"])
+	get_tree().quit()
 
 
 # Get Games Directory

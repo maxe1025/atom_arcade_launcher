@@ -23,6 +23,16 @@ grow_horizontal = 2
 text = "Atom Arcade"
 horizontal_alignment = 1
 
+[node name="ShutdownButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9434629
+anchor_right = 0.99743766
+anchor_bottom = 0.028217712
+offset_right = 0.07599974
+offset_bottom = 0.4119997
+text = "⏻ Shutdown"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
