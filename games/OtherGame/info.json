@@ -1,0 +1,6 @@
+{
+  "title": "Other Game",
+  "description": "[b][font_size=18]Other Game[/font_size][/b]\n[color=gray]Version 1.0.0 - February 2026[/color]\n\nA test, to see, if everything works fine.\n\n[b]Features:[/b]\n",
+  "exec_windows": "game.exe",
+  "exec_linux": "game.x86_64"
+}

@@ -2,9 +2,9 @@ extends Node2D
 
 @onready var grid: GridContainer = $Control/ScrollContainer/GridContainer
 @onready var scroll_container: ScrollContainer = $Control/ScrollContainer
-@onready var description_label: RichTextLabel = $Control/DescriptionLabel
-@onready var header_label: Label = $Control/Header
-@onready var shutdown_button: Button = $Control/ShutdownButton
+@onready var description_label: RichTextLabel = $Control/FooterPanel/DescriptionLabel
+@onready var header_label: Label = $Control/Panel/Header
+@onready var shutdown_button: Button = $Control/Panel/ShutdownButton
 
 var GameTileScene := preload("res://scenes/game_tile.tscn")
 var default_cover := preload("res://img/cover.png")
