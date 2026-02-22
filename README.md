@@ -1,9 +1,6 @@
 # 🕹️ Atom Arcade Launcher
 
-A fullscreen game launcher designed for DIY arcade machines, built with Godot 4.
-It loads games from a local directory, displays cover images and descriptions,
-and is controlled entirely via an arcade joystick and buttons connected through
-an Arduino microcontroller.
+The launcher application for the Atom Arcade project. This project is included in the final delivery for the "Übung Elektronik 3" cours, of [Stuttgart Media University](https://hdm-stuttgart.de/). The application is designed to be controlled via a diy, Arduino powered, controller.
 
 ---
 
@@ -11,7 +8,7 @@ an Arduino microcontroller.
 
 - A machine running **Windows** or **Linux**
 - The [Atom Arcade Connector](https://github.com/maxe1025/atom_arcade_connector) GDExtension (included in the export)
-- An Arduino running the Atom Arcade Connector firmware, connected via USB
+- An Arduino running the controller script, connected via USB
 - Your games stored in the correct directory structure (see below)
 
 ---
@@ -20,7 +17,7 @@ an Arduino microcontroller.
 
 ### 1. Download the Launcher
 
-Download the latest release for your platform from the [Releases]() page and extract it to a folder of your choice.
+Download the latest release for your platform from the [Releases](https://github.com/maxe1025/atom_arcade_launcher/releases) page and extract it to a folder of your choice.
 
 ```
 atom_arcade_launcher/
@@ -45,7 +42,7 @@ detect the correct serial port based on your operating system:
 
 ### 3. Run the Launcher
 
-Simply run the executable. The launcher will automatically scan the `games/`
+Simply run the executable. It is recomended for the arcade machine, that the launcher is set to start automatically. The launcher will automatically scan the `games/`
 directory next to the executable and load all valid game entries.
 
 ---
@@ -71,7 +68,7 @@ but recommended.
 games/
 ├── MyGame/
 │   ├── info.json
-│   ├── cover.png        # Optional, 300x400px recommended
+│   ├── cover.png        # Optional, 300x450px recommended
 │   ├── game.exe         # Windows executable
 │   └── game.x86_64      # Linux executable
 ├── AnotherGame/
@@ -123,13 +120,25 @@ The description field supports Godot's BBCode formatting:
 ## 🛠️ Building from Source
 
 1. Clone this repository
-2. Open the project in **Godot 4.x**
+2. Open the project in **Godot 4.5.1.stable** or newer
 3. Make sure the [Atom Arcade Connector](https://github.com/maxe1025/atom_arcade_connector) GDExtension is present in the project
 4. Export the project for your target platform
 5. Place the exported files together with a `games/` folder
 
 ---
 
+// ...existing code...
+
 ## 📜 License
 
-MIT License — feel free to use and modify this project for your own arcade build.
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license.
+
+You are free to:
+- **Share** — copy and redistribute the material in any medium or format
+- **Adapt** — remix, transform, and build upon the material
+
+Under the following terms:
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+- **NonCommercial** — You may not use the material for commercial purposes.
+
+> Full license text: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)

@@ -1,6 +1,6 @@
 {
-  "title": "Other Game",
-  "description": "[b][font_size=18]Other Game[/font_size][/b]\n[color=gray]Version 1.0.0 - February 2026[/color]\n\nA test, to see, if everything works fine.\n\n[b]Features:[/b]\n",
-  "exec_windows": "game.exe",
-  "exec_linux": "game.x86_64"
+  "title": "My Arcade Game",
+  "description": "[b][font_size=18]My Arcade Game[/font_size][/b]\n[color=gray]Version 1.2.0 — February 2026[/color]\n\nA fast-paced arcade shooter where you blast through waves of enemies.\nSurvive as long as possible and beat the high score!\n\n[b]Controls:[/b]\n• Joystick — Move\n• [color=yellow]A[/color] — Shoot\n• [color=yellow]B[/color] — Bomb\n\n[color=yellow]Platform:[/color] Windows / Linux",
+  "exec_windows": "my_arcade_game.exe",
+  "exec_linux": "my_arcade_game.x86_64"
 }
