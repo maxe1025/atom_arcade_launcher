@@ -47,6 +47,58 @@ directory next to the executable and load all valid game entries.
 
 ---
 
+## 🍓 Raspberry Pi Setup
+
+This section describes how to set up the launcher on a Raspberry Pi running **Raspberry Pi OS** (Wayland desktop). Make sure you have completed the standard Raspberry Pi OS setup before continuing.
+
+### 1. Install the Launcher
+
+Copy the launcher to the `/opt/arcade` directory:
+
+```bash
+sudo mkdir -p /opt/arcade
+sudo cp -r atom_arcade_launcher /opt/arcade/
+sudo chmod +x /opt/arcade/atom_arcade_launcher/launcher.arm64
+```
+
+### 2. Verify Wayland is Running
+
+The autostart method below requires a **Wayland** session. Verify that Wayland is active by running:
+
+```bash
+echo $XDG_CURRENT_DESKTOP
+```
+
+The output should contain `GNOME` or `labwc` (or similar). If the output is empty, your session may be using X11 — in that case, enable Wayland in the Raspberry Pi OS settings first.
+
+### 3. Configure Autostart
+
+Create the autostart directory and a new desktop entry file:
+
+```bash
+mkdir -p ~/.config/autostart
+nano ~/.config/autostart/arcade.desktop
+```
+
+Paste the following content into the file, then save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`):
+
+```ini
+[Desktop Entry]
+Type=Application
+Name=Arcade
+Exec=bash -c "cd /opt/arcade/atom_arcade_launcher && ./launcher.arm64"
+```
+
+### 4. Reboot
+
+Reboot the Raspberry Pi to apply the changes. The launcher will start automatically on login:
+
+```bash
+sudo reboot
+```
+
+---
+
 ## 🎮 Controls
 
 | Input         | Action                        |
