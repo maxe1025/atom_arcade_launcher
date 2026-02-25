@@ -30,7 +30,7 @@ var btn_start_was_pressed := false
 
 func _ready():
 	controller = Controller.new()
-	controller.start(_get_serial_port())
+	controller.start(SerialConfig.get_controller_port())
 
 	load_games()
 	
@@ -138,18 +138,6 @@ func _launch_focused_game():
 		launch_game(tile.get_meta("game_path"), tile.get_meta("data"))
 
 
-func _get_serial_port() -> String:
-	match OS.get_name():
-		"Windows":
-			return "COM3"
-		"Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD":
-			return "/dev/ttyACM1"
-		"macOS":
-			return "/dev/tty.usbmodem"
-		_:
-			return "/dev/ttyACM0"
-
-
 func _update_header():
 	var datetime = Time.get_datetime_dict_from_system()
 
@@ -219,7 +207,7 @@ func add_tile(data: Dictionary, game_path: String):
 	grid.add_child(tile)
 
 	var thumb: TextureButton = tile.get_node("MarginContainer/Thumbnail")
-	var name_label: Label = tile.get_node("Name")
+	var name_label: Label = tile.get_node("Panel/Name")
 
 	name_label.text = data.get("title", "Unknown Game")
 

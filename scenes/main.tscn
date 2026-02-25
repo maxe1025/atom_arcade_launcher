@@ -5,6 +5,11 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
 bg_color = Color(1, 1, 1, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.2509804)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -89,8 +94,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
 columns = 5

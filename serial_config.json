@@ -1,0 +1,20 @@
+{
+	"controller_port": {
+		"BSD": "/dev/ttyACM1",
+		"FreeBSD": "/dev/ttyACM1",
+		"Linux": "/dev/ttyACM1",
+		"NetBSD": "/dev/ttyACM1",
+		"OpenBSD": "/dev/ttyACM1",
+		"Windows": "COM3",
+		"macOS": "/dev/tty.usbmodem"
+	},
+	"display_port": {
+		"BSD": "/dev/ttyACM0",
+		"FreeBSD": "/dev/ttyACM0",
+		"Linux": "/dev/ttyACM0",
+		"NetBSD": "/dev/ttyACM0",
+		"OpenBSD": "/dev/ttyACM0",
+		"Windows": "COM7",
+		"macOS": "/dev/tty.usbmodem2"
+	}
+}

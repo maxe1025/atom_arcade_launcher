@@ -1,22 +1,51 @@
-[gd_scene format=3 uid="uid://cq8wwdkdkaqu5"]
+[gd_scene load_steps=3 format=3 uid="uid://cq8wwdkdkaqu5"]
 
-[ext_resource type="Texture2D" uid="uid://diipkfa40apv4" path="res://icon.svg" id="1_t1wy2"]
+[ext_resource type="Texture2D" uid="uid://crpp2d3yfqrmr" path="res://img/cover.png" id="1_t1wy2"]
 
-[node name="Container" type="VBoxContainer" unique_id=954318296]
-offset_right = 128.0
-offset_bottom = 155.0
-pivot_offset = Vector2(64, 72)
-alignment = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1wy2"]
+bg_color = Color(1, 1, 1, 0.101960786)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.2509804)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=308417756]
+[node name="Container" type="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 300.0
+offset_bottom = 548.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Thumbnail" type="TextureButton" parent="MarginContainer" unique_id=1196708181]
+[node name="Thumbnail" type="TextureButton" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("1_t1wy2")
 
-[node name="Name" type="Label" parent="." unique_id=1569040320]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t1wy2")
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "[Name]"
 horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

@@ -4,3 +4,5 @@
 
 .vscode/
 .idea/
+
+~connector.windows.template_debug.x86_64.dll
